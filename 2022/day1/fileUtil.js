@@ -1,5 +1,5 @@
 (function() {
-	const fsPromises = require("fs").promises;
+	const fsPromises = require('fs').promises;
 
 	function save(files) {
 		// files [{name: string, content: string}]
@@ -36,7 +36,6 @@
 
 	function load(filenames) {
 		// filenames [] of string
-		// needs testing
 
 		let fileHandles = [];
 		let loadedFiles = {
