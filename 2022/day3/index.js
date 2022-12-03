@@ -4,8 +4,8 @@
 	const parts = [require('./part1'), require('./part2')];
 
 	for (let line of lines) {
-		for (let i = 0; i < parts.length; i++) {
-			parts[i].processLine(line, shared);
+		for (let part of parts) {
+			part.processLine(line, shared);
 		}
 	}
 
