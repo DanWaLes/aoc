@@ -5,13 +5,13 @@
 
 	for (let line of lines) {
 		for (let i = 0; i < parts.length; i++) {
-			parts[i].data = parts[i].processLine(line, parts[i].data, shared);
+			parts[i].processLine(line, shared);
 		}
 	}
 
 	for (let i = 0; i < parts.length; i++) {
 		const part = parts[i];
 
-		console.log('part ' + (i + 1) + ' = ' + part.onAllLinesRead(part.data, shared));
+		console.log('part ' + (i + 1) + ' = ' + part.onAllLinesRead(shared));
 	}
 })();
