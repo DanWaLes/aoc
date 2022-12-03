@@ -15,11 +15,14 @@
 		return freq;
 	}
 
-	function getCommon(...strs) {
-		let common = getCharFreqs(strs[0]);
+	function getCommon(strs) {
+		// strs [[string, string]]
 
-		for (let i = 1; i < strs.length; i++) {
-			const freq = getCharFreqs(strs[i]);
+		const strList = strs[0];
+		let common = getCharFreqs(strList[0]);
+
+		for (let i = 1; i < strList.length; i++) {
+			const freq = getCharFreqs(strList[i]);
 
 			for (let c in common) {
 				const existingFreq = common[c];
@@ -65,7 +68,7 @@
 		const compartmentSize = line.length / 2;
 		const c1 = line.substring(0, compartmentSize);
 		const c2 = line.substring(compartmentSize, line.length);
-		const common = getCommon(c1, c2);
+		const common = getCommon([[c1, c2]]);
 		let sum = 0;
 
 		for (let c in common) {
@@ -84,7 +87,7 @@
 		else {
 			p2lines.push(line);
 
-			const common = getCommon(p2lines[0], p2lines[1], p2lines[2]);
+			const common = getCommon([p2lines]);
 			let sum = 0;
 
 			for (let c in common) {
