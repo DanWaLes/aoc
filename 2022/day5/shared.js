@@ -21,6 +21,16 @@
 		return creates;
 	}
 	
+	function readILine(line) {
+		const iLine = line.match(/^move (\d+) from (\d+) to (\d+)$/);
+
+		if (!iLine) {
+			return {from: 0, dest: 0, numToMove: 0};
+		}
+
+		return {from: parseInt(iLine[2]) - 1, dest: parseInt(iLine[3]) - 1, numToMove: parseInt(iLine[1])};
+	}
+	
 	function getAns(creates) {
 		let str = '';
 
@@ -31,5 +41,5 @@
 		return str;
 	}
 
-	module.exports = {fileUtil, parseCLine, getAns};
+	module.exports = {fileUtil, parseCLine, readILine, getAns};
 })();
