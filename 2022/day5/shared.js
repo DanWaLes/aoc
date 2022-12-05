@@ -1,26 +1,26 @@
 (() => {
 	const fileUtil = require('./fileUtil');
 
-	function parseCLine(line, creates) {
+	function parseCLine(line, crates) {
 		const cLine = line.match(/(?:(\s{3})|(\[[A-Z]\]))(?: |$)/g);
 
 		if (cLine) {
 			for (let i = 0; i < cLine.length; i++) {
-				if (!creates[i]) {
-					creates[i] = [];
+				if (!crates[i]) {
+					crates[i] = [];
 				}
 
 				const create = cLine[i].trim();
 
 				if (create) {
-					creates[i].splice(0, 0, create.match(/[A-Z]/)[0]);
+					crates[i].splice(0, 0, create.match(/[A-Z]/)[0]);
 				}
 			}
 		}
 
-		return creates;
+		return crates;
 	}
-	
+
 	function readILine(line) {
 		const iLine = line.match(/^move (\d+) from (\d+) to (\d+)$/);
 
@@ -30,12 +30,12 @@
 
 		return {from: parseInt(iLine[2]) - 1, dest: parseInt(iLine[3]) - 1, numToMove: parseInt(iLine[1])};
 	}
-	
-	function getAns(creates) {
+
+	function getAns(crates) {
 		let str = '';
 
-		for (let i = 0; i < creates.length; i++) {
-			str += creates[i][creates[i].length - 1];
+		for (let i = 0; i < crates.length; i++) {
+			str += crates[i][crates[i].length - 1];
 		}
 
 		return str;

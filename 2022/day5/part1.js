@@ -1,18 +1,18 @@
 (() => {
-	let creates = [];
+	let crates = [];
 
 	function processLine(line, shared) {
-		creates = shared.parseCLine(line, creates);
+		crates = shared.parseCLine(line, crates);
 		const {from, dest, numToMove} = shared.readILine(line);
 
 		for (let i = 0; i < numToMove; i++) {
-			const toMove = creates[from].pop();
-			creates[dest].push(toMove);
+			const toMove = crates[from].pop();
+			crates[dest].push(toMove);
 		}
 	}
 
 	function onAllLinesRead(shared) {
-		console.log('part 1 = ' + shared.getAns(creates));// FZCMJCRHZ
+		console.log('part 1 = ' + shared.getAns(crates));// FZCMJCRHZ
 	}
 
 	module.exports = {processLine, onAllLinesRead};

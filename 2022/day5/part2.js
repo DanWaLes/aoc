@@ -1,15 +1,15 @@
 (() => {
-	let creates = [];
+	let crates = [];
 
 	function processLine(line, shared) {
-		creates = shared.parseCLine(line, creates);
+		crates = shared.parseCLine(line, crates);
 		const {from, dest, numToMove} = shared.readILine(line);
-		const toMove = creates[from].splice(creates[from].length - numToMove, numToMove);
-		creates[dest] = creates[dest].concat(toMove);
+		const toMove = crates[from].splice(crates[from].length - numToMove, numToMove);
+		crates[dest] = crates[dest].concat(toMove);
 	}
 
 	function onAllLinesRead(shared) {
-		console.log('part 2 = ' + shared.getAns(creates));// JSDHQMZGF
+		console.log('part 2 = ' + shared.getAns(crates));// JSDHQMZGF
 	}
 
 	module.exports = {processLine, onAllLinesRead};
