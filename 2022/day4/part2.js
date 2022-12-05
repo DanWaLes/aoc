@@ -14,7 +14,7 @@
 	}
 
 	function onAllLinesRead(shared) {
-		return sum;// 886
+		return console.log('part 2 = ' + sum);// 886
 	}
 
 	module.exports = {processLine, onAllLinesRead};

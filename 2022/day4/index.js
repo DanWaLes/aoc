@@ -1,17 +1,15 @@
 (async () => {
-	const shared = require('./shared');
-	const lines = (await shared.fileUtil.load(['input.txt']))['input.txt'].replace(/\s*$/, '').split(/\r?\n|\r/);
-	const parts = [require('./part1'), require('./part2')];
+	const shared = require('./shared'), parts = [require('./part1'), require('./part2')];
 
-	for (let line of lines) {
+	await shared.fileUtil.readByLines('input.txt', (line) => {
 		for (let part of parts) {
 			part.processLine(line, shared);
 		}
-	}
+	});
 
-	for (let i = 0; i < parts.length; i++) {
-		const part = parts[i];
-
-		console.log('part ' + (i + 1) + ' = ' + part.onAllLinesRead(shared));
+	for (let part of parts) {
+		part.onAllLinesRead(shared);
 	}
-})();
+})().catch((err) => {
+	console.log(err);
+});
