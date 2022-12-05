@@ -3,11 +3,11 @@
 
 	function processLine(line, shared) {
 		creates = shared.parseCLine(line, creates);
-		const iLine = shared.readILine(line);
+		const {from, dest, numToMove} = shared.readILine(line);
 
-		for (let i = 0; i < iLine.numToMove; i++) {
-			const toMove = creates[iLine.from].pop();
-			creates[iLine.dest].push(toMove);
+		for (let i = 0; i < numToMove; i++) {
+			const toMove = creates[from].pop();
+			creates[dest].push(toMove);
 		}
 	}
 
