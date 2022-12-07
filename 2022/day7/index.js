@@ -8,7 +8,7 @@
 	});
 
 	for (let part of parts) {
-		part.onAllLinesRead(shared);
+		await part.onAllLinesRead(shared);
 	}
 })().catch((err) => {
 	console.log(err);
