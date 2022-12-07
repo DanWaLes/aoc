@@ -110,12 +110,7 @@
 				str += '\n' + indent + '}';
 			}
 			else {
-				if (typeof obj == 'string') {
-					str += '"' + obj + '"';
-				}
-				else {
-					str += obj;
-				}
+				str += JSON.stringify(obj);
 			}
 		}
 
